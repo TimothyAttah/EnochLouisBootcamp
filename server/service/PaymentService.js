@@ -42,22 +42,10 @@ class PaymentService {
             reject(error.message);
           }
           const response = JSON.parse(body);
-          // const { reference, amount, status } = response.data;
-          // const { email } = response.data.customer;
-          // const firstname = response.data.metadata.firstname;
-          // const lastname = response.data.metadata.lastname;
-
-          const data = response.data;
-
-          const newPayment = {
-            // reference,
-            // amount,
-            // email,
-            // firstname,
-            // lastname,
-            // status,
-            data,
-          };
+          const { reference, amount, status } = response.data;
+          const { email } = response.data.customer;
+          const name = response.data.metadata.name;
+          const newPayment = { reference, amount, email, name, status };
           const payment = await Payment.create(newPayment);
           return resolve(payment);
         });
