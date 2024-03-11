@@ -42,20 +42,23 @@ class PaymentService {
             reject(error.message);
           }
           const response = JSON.parse(body);
-          const { reference, amount, status } = response.data;
-          const { email } = response.data.customer;
-          const firstname = response.data.metadata.firstname;
-          const lastname = response.data.metadata.lastname;
+          // const { reference, amount, status } = response.data;
+          // const { email } = response.data.customer;
+          // const firstname = response.data.metadata.firstname;
+          // const lastname = response.data.metadata.lastname;
+
+          const data = response.data;
 
           const newPayment = {
-            reference,
-            amount,
-            email,
-            firstname,
-            lastname,
-            status,
+            // reference,
+            // amount,
+            // email,
+            // firstname,
+            // lastname,
+            // status,
+            data,
           };
-          const payment = await Payment.create(newPayment).populate('paidBy');
+          const payment = await Payment.create(newPayment);
           return resolve(payment);
         });
       } catch (error) {

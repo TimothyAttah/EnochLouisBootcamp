@@ -75,6 +75,37 @@ app.get('/api/paystack', function (req, res) {
   requestPaystack.end();
 });
 
+app.get('/api/paystack/verify', function (req, res) {
+  const options = {
+    hostname: 'api.paystack.co',
+    port: 443,
+    path: '/transaction/verify/:reference',
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer sk_test_532e2a95b53164b6b77c5521a741f7258bf88efe',
+    },
+  };
+  https
+    .request(options, (resPaystack) => {
+      let data = '';
+
+      resPaystack.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      const params = JSON.stringify(data);
+
+      resPaystack.on('end', () => {
+        // console.log(JSON.parse(data));
+
+        res.json({ data: params });
+      });
+    })
+    .on('error', (error) => {
+      console.error(error.message);
+    });
+});
+
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));

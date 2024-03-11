@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Container } from '../../styles/globalStyles';
 import { FadeIn } from '../../components/fadeIn/FadeIn';
 import * as Styles from './PaymentStyles';
+import { user } from '../../components/Authentication';
+
 // import PaystackPop from '@paystack/inline-js';
 import {
   paymentsMethod,
@@ -17,9 +19,9 @@ const Payment = () => {
   const navigate = useNavigate();
   const [paymentData, setPaymentData] = useState({
     amount: '',
-    email: '',
-    firstname: '',
-    lastname: '',
+    email: user.email,
+    firstname: user.firstname,
+    lastname: user.lastname,
   });
   const { amount, email, firstname, lastname } = paymentData;
   const dispatch = useDispatch();
@@ -44,15 +46,6 @@ const Payment = () => {
       //   firstname,
       //   lastname,
       // };
-
-      const params = JSON.stringify({
-        amount,
-        email,
-        firstname,
-        lastname,
-      });
-
-      // console.log(newTransaction);
 
       dispatch(startPayment(paymentData));
       // navigate('/confirm-payment');
@@ -89,7 +82,7 @@ const Payment = () => {
                   type='text'
                   name='email'
                   required
-                  value={email}
+                  value={user.email}
                   onChange={handleInputs}
                 />
               </FadeIn>
@@ -103,7 +96,7 @@ const Payment = () => {
                   type='text'
                   name='firstname'
                   required
-                  value={firstname}
+                  value={user.firstname}
                   onChange={handleInputs}
                 />
               </FadeIn>
@@ -117,7 +110,7 @@ const Payment = () => {
                   type='text'
                   name='lastname'
                   required
-                  value={lastname}
+                  value={user.lastname}
                   onChange={handleInputs}
                 />
               </FadeIn>

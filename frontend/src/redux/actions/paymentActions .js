@@ -53,6 +53,22 @@ export const startPayment = (paymentData) => async (dispatch) => {
   }
 };
 
+export const verifyPayment = (reference) => async (dispatch) => {
+  try {
+    const { data } = await api.createPayment(reference);
+    dispatch({
+      type: PAYMENT.CREATE_PAYMENT,
+      payload: data,
+    });
+
+    console.log('verify payment data >>>>>>', data);
+  } catch (err) {
+    if (err.response && err.response.data) {
+      toast.error(err.response.data.msg);
+    }
+  }
+};
+
 export const getPayment = (paymentData) => async (dispatch) => {
   try {
     const { data } = await api.getPaymentReceipt(paymentData);

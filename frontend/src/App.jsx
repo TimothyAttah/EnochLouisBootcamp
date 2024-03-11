@@ -24,7 +24,9 @@ const App = () => {
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='payment' element={<Payment />} />
             <Route path='/verify_payment' element={<VerifyPayment />} />
-            <Route path='/confirm-payment' element={<ConfirmPayment />} />
+            <Route path='/confirm-payment' element={<ConfirmPayment />}>
+              <Route path=':reference' element={<ConfirmPayment />} />
+            </Route>
           </Route>
           <Route element={<RequireConfirmation />}>
             <Route path='/tutorials' element={<Tutorial />} />

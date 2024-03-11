@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useSearchParams } from 'react-router-dom';
 import { Container } from '../../styles/globalStyles';
 import { FadeIn } from '../../components/fadeIn/FadeIn';
 // import PaystackPop from '@paystack/inline-js';
@@ -15,24 +17,36 @@ const ConfirmPayment = () => {
   const navigate = useNavigate();
   const [referenceCode, setReferenceCode] = useState('');
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const url = 'https://enoch-louis-bootcamp.vercel.app/confirm-payment';
+
+  useEffect(() => {
+    if (searchParams.has('reference')) {
+      const reference = searchParams.get('reference');
+      alert(reference);
+    }
+  }, [searchParams]);
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    if (referenceCode === '') {
-      toast.error('Please enter your reference code');
-    } else if (referenceCode !== reference) {
-      toast.error('Reference code is invalid');
-    } else if (referenceCode === reference) {
-      toast.success('Payment is confirmed');
-      localStorage.setItem('isActive', 'true');
-      // window.location.reload();
-    }
+    // if (referenceCode === '') {
+    //   toast.error('Please enter your reference code');
+    // } else if (referenceCode !== reference) {
+    //   toast.error('Reference code is invalid');
+    // } else if (referenceCode === reference) {
+    //   toast.success('Payment is confirmed');
+    //   localStorage.setItem('isActive', 'true');
+    //   // window.location.reload();
+    // }
 
     navigate('/tutorials');
     // window.location.href = '/login';
   };
   return (
     <Styles.ConfirmPaymentContainer>
-      <Styles.InfoBox>
+      <h1>Verify Payment</h1>
+      {/* <Styles.InfoBox>
         <FadeIn delay={0.2} direction='down'>
           <h1>Confirm your payment </h1>
         </FadeIn>
@@ -55,7 +69,7 @@ const ConfirmPayment = () => {
         <FadeIn center='true' delay={0.6} direction='up'>
           <button>Submit Reference Code</button>
         </FadeIn>
-      </Styles.Form>
+      </Styles.Form> */}
       <Link to='/payment'>Make Payment Here.</Link>
     </Styles.ConfirmPaymentContainer>
   );
