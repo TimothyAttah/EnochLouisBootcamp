@@ -46,7 +46,7 @@ class PaymentService {
           // const { email } = response.data.customer;
           // const name = response.data.metadata.name;
           // const newPayment = { reference, amount, email, status };
-          const newPayment = { data: response.data };
+          const newPayment = { data: response };
 
           const payment = await Payment.create(newPayment);
           return resolve(payment);
