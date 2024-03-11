@@ -15,7 +15,7 @@ app.use(express.json());
 
 const corsOptions = {
   // origin: 'http://localhost:3000',
-  origin: 'https://enoch-louis-bootcamp.vercel.app/',
+  origin: 'https://enoch-louis-bootcamp.vercel.app',
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
@@ -25,16 +25,16 @@ app.get('/', (req, res) => {
   res.send('Welcome To Enoch Louis Coding Bootcamp School');
 });
 
-router.get('/', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Max-Age', '1800');
-  res.setHeader('Access-Control-Allow-Headers', 'content-type');
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'PUT, POST, GET, DELETE, PATCH, OPTIONS',
-  );
-});
+// router.get('/', (req, res) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Credentials', 'true');
+//   res.setHeader('Access-Control-Max-Age', '1800');
+//   res.setHeader('Access-Control-Allow-Headers', 'content-type');
+//   res.setHeader(
+//     'Access-Control-Allow-Methods',
+//     'PUT, POST, GET, DELETE, PATCH, OPTIONS',
+//   );
+// });
 
 app.use('/api/auth', authRouters);
 // app.use('/api/projectCleanEarth/pay', paymentRoutes);
