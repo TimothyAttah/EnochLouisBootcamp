@@ -3,19 +3,19 @@ import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
 import { Container } from '../../styles/globalStyles';
 import { FadeIn } from '../../components/fadeIn/FadeIn';
-// import PaystackPop from '@paystack/inline-js';
-import { startPayment } from '../../redux/actions/paymentActions ';
+import { verifyPayment } from '../../redux/actions/paymentActions ';
 import { useDispatch } from 'react-redux';
 import * as Styles from './ConfirmPaymentStyles';
-// import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { createPayment } from '../../redux/api';
 
 const reference = localStorage.getItem('referenceCode');
 
 const ConfirmPayment = () => {
   const navigate = useNavigate();
   const [referenceCode, setReferenceCode] = useState('');
+  const dispatch = useDispatch();
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -24,7 +24,12 @@ const ConfirmPayment = () => {
   useEffect(() => {
     if (searchParams.has('reference')) {
       const reference = searchParams.get('reference');
-      alert(reference);
+      async function verifyPayments() {
+        const { data } = await createPayment(reference);
+        console.log('Verify Payment Data', data);
+      }
+
+      verifyPayments();
     }
   }, [searchParams]);
 
