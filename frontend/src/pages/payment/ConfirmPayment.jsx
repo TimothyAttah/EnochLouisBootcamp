@@ -24,14 +24,16 @@ const ConfirmPayment = () => {
   useEffect(() => {
     if (searchParams.has('reference')) {
       const reference = searchParams.get('reference');
-      async function verifyPayments() {
-        const { data } = await createPayment(reference);
-        console.log('Verify Payment Data', data);
-      }
+      // async function verifyPayments() {
+      //   const { data } = await createPayment(reference);
+      //   console.log('Verify Payment Data', data);
+      // }
 
-      verifyPayments();
+      // verifyPayments();
+
+      dispatch(verifyPayment(reference));
     }
-  }, [searchParams]);
+  }, [searchParams, dispatch]);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
