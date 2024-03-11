@@ -5,22 +5,22 @@ const PaymentSchema = new mongoose.Schema(
   {
     firstname: {
       type: String,
-      required: true,
+      // required: true,
     },
     lastname: {
       type: String,
-      required: true,
+      // required: true,
     },
     email: {
       type: String,
-      required: true,
+      // required: true,
       unique: true,
     },
     amount: {
       type: String,
-      required: true,
+      // required: true,
     },
-    paidBy: { type: ObjectId, ref: 'Users' },
+    // paidBy: { type: ObjectId, ref: 'Users' },
 
     status: {
       type: String,
