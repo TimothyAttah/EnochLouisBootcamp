@@ -85,6 +85,7 @@ const Payment = () => {
                   required
                   value={user.email}
                   onChange={handleInputs}
+                  disabled
                 />
               </FadeIn>
             </Styles.PaymentInput>
@@ -99,6 +100,7 @@ const Payment = () => {
                   required
                   value={user.firstname}
                   onChange={handleInputs}
+                  disabled
                 />
               </FadeIn>
             </Styles.PaymentInput>
@@ -113,6 +115,7 @@ const Payment = () => {
                   required
                   value={user.lastname}
                   onChange={handleInputs}
+                  disabled
                 />
               </FadeIn>
             </Styles.PaymentInput>
