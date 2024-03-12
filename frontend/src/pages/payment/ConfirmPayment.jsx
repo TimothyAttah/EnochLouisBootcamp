@@ -9,6 +9,7 @@ import * as Styles from './ConfirmPaymentStyles';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { createPayment } from '../../redux/api';
+// import https from 'https-browserify';
 
 const reference = localStorage.getItem('referenceCode');
 
@@ -19,21 +20,54 @@ const ConfirmPayment = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const url = 'https://enoch-louis-bootcamp.vercel.app/confirm-payment';
-
   useEffect(() => {
     if (searchParams.has('reference')) {
       const reference = searchParams.get('reference');
-      // async function verifyPayments() {
-      //   const { data } = await createPayment(reference);
-      //   console.log('Verify Payment Data', data);
-      // }
+      const url = `https://api.paystack.co/transaction/verify/:${reference}`;
+      async function verifyPayments() {
+        const { data } = await axios.get(url, {
+          headers: {
+            Authorization:
+              'Bearer sk_test_532e2a95b53164b6b77c5521a741f7258bf88efe',
+          },
+        });
 
-      // verifyPayments();
+        console.log('This is verifyPayments data', data);
+      }
 
-      dispatch(verifyPayment(reference));
+      verifyPayments();
+
+      // dispatch(verifyPayment(reference));
     }
-  }, [searchParams, dispatch]);
+  }, [searchParams]);
+
+  // const https = require('https');
+
+  // const options = {
+  //   hostname: 'api.paystack.co',
+  //   port: 443,
+  //   path: `/transaction/verify/:${reference}`,
+  //   method: 'GET',
+  //   headers: {
+  //     Authorization: 'Bearer sk_test_532e2a95b53164b6b77c5521a741f7258bf88efe',
+  //   },
+  // };
+
+  // https
+  //   .request(options, (res) => {
+  //     let data = '';
+
+  //     res.on('data', (chunk) => {
+  //       data += chunk;
+  //     });
+
+  //     res.on('end', () => {
+  //       console.log(JSON.parse(data));
+  //     });
+  //   })
+  //   .on('error', (error) => {
+  //     console.error(error);
+  //   });
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +81,7 @@ const ConfirmPayment = () => {
     //   // window.location.reload();
     // }
 
-    navigate('/tutorials');
+    // navigate('/tutorials');
     // window.location.href = '/login';
   };
   return (

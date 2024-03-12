@@ -11,7 +11,9 @@ class PaymentService {
       try {
         const form = _.pick(data, ['amount', 'email', 'firstname', 'lastname']);
         form.metadata = {
-          name: form.name,
+          firstname: form.firstname,
+          lastname: form.lastname,
+          email: form.email,
         };
         form.amount *= 100;
 
@@ -42,11 +44,21 @@ class PaymentService {
             reject(error.message);
           }
           const response = JSON.parse(body);
-          // const { reference, amount, status } = response.data;
-          // const { email } = response.data.customer;
-          // const name = response.data.metadata.name;
-          // const newPayment = { reference, amount, email, status };
-          const newPayment = { data: response };
+          // const reference = response.data.reference;
+          const status = response.status;
+          // const amount = response.data.amount;
+          // const message = response.data.message;
+          // const firstname = response.customer.first_name;
+
+          const newPayment = {
+            // reference,
+            // amount,
+            // email,
+            status,
+            // message,
+            // firstname,
+          };
+          // const newPayment = { data: response.data };
 
           const payment = await Payment.create(newPayment);
           return resolve(payment);

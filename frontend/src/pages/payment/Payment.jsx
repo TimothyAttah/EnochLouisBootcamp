@@ -18,7 +18,7 @@ import axios from 'axios';
 const Payment = () => {
   const navigate = useNavigate();
   const [paymentData, setPaymentData] = useState({
-    amount: '',
+    amount: '30000',
     email: user.email,
     firstname: user.firstname,
     lastname: user.lastname,
@@ -70,6 +70,7 @@ const Payment = () => {
                   value={amount}
                   required
                   onChange={handleInputs}
+                  disabled
                 />
               </FadeIn>
             </Styles.PaymentInput>
