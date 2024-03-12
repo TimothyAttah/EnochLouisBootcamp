@@ -17,7 +17,7 @@ const Dashboard = () => {
               Welcome, {user?.firstname} {user?.lastname}
             </H2>
             <div>
-              <p class='mb-3'>
+              {/* <p class='mb-3'>
                 <mark>
                   But Your Registration is not yet complete until you Pay
                 </mark>
@@ -27,7 +27,7 @@ const Dashboard = () => {
                     Hurry. Click here Now to pay and secure your chance.
                   </button>
                 </a>
-              </p>
+              </p> */}
               <p className='mb-3'>
                 <mark>
                   But Your Registration is not yet complete until you Pay
