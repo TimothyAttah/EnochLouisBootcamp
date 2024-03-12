@@ -25,21 +25,24 @@ const ConfirmPayment = () => {
       const reference = searchParams.get('reference');
       const url = `https://api.paystack.co/transaction/verify/:${reference}`;
       async function verifyPayments() {
-        const { data } = await axios.get(url, {
-          headers: {
-            Authorization:
-              'Bearer sk_test_532e2a95b53164b6b77c5521a741f7258bf88efe',
-          },
-        });
-
-        console.log('This is verifyPayments data', data);
+        const { data } = await createPayment(reference);
+        console.log('Verify Payment Data', data);
       }
 
       verifyPayments();
 
-      // dispatch(verifyPayment(reference));
+      const { data } = axios.get(url, {
+        headers: {
+          Authorization:
+            'Bearer sk_test_532e2a95b53164b6b77c5521a741f7258bf88efe',
+        },
+      });
+
+      console.log('This is verifyPayment data', data);
+
+      dispatch(verifyPayment(reference));
     }
-  }, [searchParams]);
+  }, [searchParams, dispatch]);
 
   // const https = require('https');
 
