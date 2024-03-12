@@ -45,20 +45,20 @@ class PaymentService {
           }
           const response = JSON.parse(body);
           // const reference = response.data.reference;
-          const status = response.status;
+          // const status = response.status;
           // const amount = response.data.amount;
           // const message = response.data.message;
           // const firstname = response.customer.first_name;
 
-          const newPayment = {
-            // reference,
-            // amount,
-            // email,
-            status,
-            // message,
-            // firstname,
-          };
-          // const newPayment = { data: response.data };
+          // const newPayment = {
+          //   // reference,
+          //   // amount,
+          //   // email,
+          //   status,
+          //   // message,
+          //   // firstname,
+          // };
+          const newPayment = { data: response.data };
 
           const payment = await Payment.create(newPayment);
           return resolve(payment);
