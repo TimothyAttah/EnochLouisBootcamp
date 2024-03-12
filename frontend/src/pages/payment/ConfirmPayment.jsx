@@ -24,12 +24,13 @@ const ConfirmPayment = () => {
   useEffect(() => {
     if (searchParams.has('reference')) {
       const reference = searchParams.get('reference');
-      async function verifyPayments() {
-        const { data } = await createPayment(reference);
-        console.log('Verify Payment Data', data);
-      }
 
-      verifyPayments();
+      // async function verifyPayments() {
+      //   const { data } = await createPayment(reference);
+      //   console.log('Verify Payment Data', data);
+      // }
+
+      // verifyPayments();
 
       // const { data } = axios.get(url, {
       //   headers: {
