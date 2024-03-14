@@ -14,12 +14,19 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// const corsOptions = {
+//   // origin: 'http://localhost:3000',
+//   origin: 'https://enoch-louis-bootcamp.vercel.app',
+//   credentials: true,
+//   'access-control-allow-credentials': true,
+//   optionSuccessStatus: 200,
+// };
+
 const corsOptions = {
-  // origin: 'http://localhost:3000',
   origin: 'https://enoch-louis-bootcamp.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
-  'access-control-allow-credentials': true,
-  optionSuccessStatus: 200,
+  optionsSuccessStatus: 204,
 };
 app.use(cors(corsOptions));
 
