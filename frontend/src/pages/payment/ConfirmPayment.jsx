@@ -23,14 +23,14 @@ const ConfirmPayment = () => {
   useEffect(() => {
     if (searchParams.has('reference')) {
       const reference = searchParams.get('reference');
-      const url = `https://enoch-louis-bootcamp-2skl.vercel.app/api/pay/
+      const url = `https://enoch-louis-bootcamp-2skl.vercel.app/api/api/paystack/verify
       createPayment?reference=${reference}`;
       const url_api = `https://api/paystack.co/transaction/verify/${reference}`;
-      alert(reference);
+      // alert(reference);
 
       async function verifyPayments() {
         await axios
-          .get(url_api, reference, {
+          .get(url, reference, {
             header: {
               'X-requested-With': 'XMLhttpRequest',
             },
