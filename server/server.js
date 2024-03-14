@@ -6,6 +6,8 @@ import { connectDB } from './config/db.js';
 import { authRouters } from './routes/authRoutes.js';
 import paymentRoutes from './routes/payemtRoutes.js';
 import https from 'https';
+import http from 'http';
+import WebSocket from 'ws';
 
 connectDB();
 
@@ -34,16 +36,16 @@ app.get('/', (req, res) => {
   res.send('Welcome To Enoch Louis Coding Bootcamp School version 3');
 });
 
-app.get('/', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Max-Age', '1800');
-  res.setHeader('Access-Control-Allow-Headers', 'content-type');
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'PUT, POST, GET, DELETE, PATCH, OPTIONS',
-  );
-});
+// app.get('/', (req, res) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Credentials', 'true');
+//   res.setHeader('Access-Control-Max-Age', '1800');
+//   res.setHeader('Access-Control-Allow-Headers', 'content-type');
+//   res.setHeader(
+//     'Access-Control-Allow-Methods',
+//     'PUT, POST, GET, DELETE, PATCH, OPTIONS',
+//   );
+// });
 
 app.use('/api/auth', authRouters);
 // app.use('/api/projectCleanEarth/pay', paymentRoutes);
@@ -137,14 +139,14 @@ app.get('/api/paystack/verify', function (req, res) {
   const options = {
     hostname: 'api.paystack.co',
     port: 443,
-    path: '/transaction/verify/:reference',
+    path: '/transaction/verify/' + encodeURIComponent(req),
     method: 'GET',
     headers: {
       Authorization: 'Bearer sk_test_532e2a95b53164b6b77c5521a741f7258bf88efe',
     },
   };
 
-  https
+  let reqAPI = https
     .request(options, (resPaystack) => {
       let data = '';
 
@@ -154,14 +156,23 @@ app.get('/api/paystack/verify', function (req, res) {
 
       resPaystack.on('end', () => {
         res.send(data);
-        console.log(JSON.parse(data));
+        // console.log(JSON.parse(data));
       });
     })
     .on('error', (error) => {
       console.error(error);
     });
+
+  reqAPI.end();
 });
+
+// const server = http.createServer(app);
+// const wss = new WebSocket.Server({ server });
 
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
+
+// server.listen(8080, function listening() {
+//   console.log('Listening on %d', server.address().port);
+// });

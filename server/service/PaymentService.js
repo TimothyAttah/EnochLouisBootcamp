@@ -58,7 +58,7 @@ class PaymentService {
           //   // message,
           //   // firstname,
           // };
-          const newPayment = { data: response.data };
+          const newPayment = { data: response };
 
           const payment = await Payment.create(newPayment);
           return resolve(payment);

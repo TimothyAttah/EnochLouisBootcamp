@@ -20,17 +20,28 @@ const ConfirmPayment = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // const url = `https://api.paystack.co/transaction/verify/:${reference}`;
   useEffect(() => {
     if (searchParams.has('reference')) {
       const reference = searchParams.get('reference');
+      const url = `https://enoch-louis-bootcamp-2skl.vercel.app/api/pay/
+      createPayment?reference=${reference}`;
+      const url_api = `https://api/paystack.co/transaction/verify/${reference}`;
+      alert(reference);
 
-      // async function verifyPayments() {
-      //   const { data } = await createPayment(reference);
-      //   console.log('Verify Payment Data', data);
-      // }
+      async function verifyPayments() {
+        await axios
+          .get(url_api, reference, {
+            header: {
+              'X-requested-With': 'XMLhttpRequest',
+            },
+          })
+          .then((resp) => {
+            let data = JSON.parse(resp.data);
+            console.log('This is verifyPayments data>>>>>', data);
+          });
+      }
 
-      // verifyPayments();
+      verifyPayments();
 
       // const { data } = axios.get(url, {
       //   headers: {
@@ -41,7 +52,7 @@ const ConfirmPayment = () => {
 
       // console.log('This is verifyPayment data', data);
 
-      dispatch(verifyPayment(reference));
+      // dispatch(verifyPayment(reference));
     }
   }, [searchParams, dispatch]);
 
