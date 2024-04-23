@@ -113,13 +113,7 @@ export const Header = () => {
                 </button>
               </HeaderForm>
             ) : (
-              <button
-                className='btn btn-primary rounded-pill'
-                type='button'
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
+              ''
             )}
           </nav>
 

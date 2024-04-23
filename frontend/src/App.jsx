@@ -10,6 +10,12 @@ import Layout from './components/Layout';
 import Payment from './pages/payment/Payment';
 import ConfirmPayment from './pages/payment/ConfirmPayment';
 import Tutorial from './pages/tutorials/Tutorial';
+import Html from './pages/tutorials/html/Html';
+import HtmlHome from './pages/tutorials/html/HtmlHome';
+import HtmlIntroduction from './pages/tutorials/html/HtmlIntroduction';
+import HtmlEditors from './pages/tutorials/html/HtmlEditors';
+import HtmlBasic from './pages/tutorials/html/HtmlBasic';
+import HtmlAttributes from './pages/tutorials/html/HtmlAttributes';
 
 const App = () => {
   return (
@@ -19,6 +25,22 @@ const App = () => {
           {/* public routes */}
           <Route path='/' element={<Home />} />
           <Route path='/register_success' element={<RegistrationSuccess />} />
+          <Route path='/tutorials' element={<Tutorial />} />
+          <Route path='/tutorials/html' element={<Html />}></Route>
+          <Route
+            path='/tutorials/html/html-introduction'
+            element={<HtmlIntroduction />}
+          />
+          <Route
+            path='/tutorials/html/html-editors'
+            element={<HtmlEditors />}
+          />
+          <Route path='/tutorials/html/html-basics' element={<HtmlBasic />} />
+          <Route
+            path='/tutorials/html/html-attributes'
+            element={<HtmlAttributes />}
+          />
+
           {/** private routes */}
           <Route element={<RequireAuth />}>
             <Route path='/dashboard' element={<Dashboard />} />
@@ -28,9 +50,9 @@ const App = () => {
               <Route path=':reference' element={<ConfirmPayment />} />
             </Route>
           </Route>
-          <Route element={<RequireConfirmation />}>
+          {/* <Route element={<RequireConfirmation />}>
             <Route path='/tutorials' element={<Tutorial />} />
-          </Route>
+          </Route> */}
         </Route>
       </Routes>
       <ToastContainer />
