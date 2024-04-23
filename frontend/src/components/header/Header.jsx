@@ -48,7 +48,7 @@ export const Header = () => {
       <div>
         <Link className='logo navbar-brand' to='#'>
           <Logo>
-            <b>Code2ChangeYourWorld</b>
+            <b>Flyingyouths.tech</b>
           </Logo>
         </Link>
         <div>
@@ -56,7 +56,7 @@ export const Header = () => {
             <div className='container'>
               <Link className='logo navbar-brand' to='#'>
                 <Logo>
-                  <b>Code2ChangeYourWorld</b>
+                  <b>Flyingyouths.tech</b>
                 </Logo>
               </Link>
               <button
