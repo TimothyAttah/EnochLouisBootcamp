@@ -30,7 +30,7 @@ const corsOptions = {
   credentials: true,
   optionsSuccessStatus: 204,
 };
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
   res.send('Welcome To Enoch Louis Coding Bootcamp School version 3');

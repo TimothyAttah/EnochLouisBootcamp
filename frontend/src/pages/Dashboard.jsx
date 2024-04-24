@@ -17,7 +17,7 @@ const Dashboard = () => {
               Welcome, {user?.firstname} {user?.lastname}
             </H2>
             <div>
-              {/* <p class='mb-3'>
+              <p class='mb-3'>
                 <mark>
                   But Your Registration is not yet complete until you Pay
                 </mark>
@@ -27,8 +27,8 @@ const Dashboard = () => {
                     Hurry. Click here Now to pay and secure your chance.
                   </button>
                 </a>
-              </p> */}
-              <p className='mb-3'>
+              </p>
+              {/* <p className='mb-3'>
                 <mark>
                   But Your Registration is not yet complete until you Pay
                 </mark>
@@ -38,18 +38,18 @@ const Dashboard = () => {
                     Hurry. Click here Now to pay and secure your chance.
                   </button>
                 </a>
-              </p>
+              </p> */}
               <p>
                 Instead of
                 <span style={{ textDecoration: 'line-through' }}>N450,000</span>
-                , just pay N30,000 only, for your Full stack developer training
+                , just pay N25,000 only, for your Full stack developer training
               </p>
             </div>
           </div>
         </div>
         <div className='row'>
           <div className='className="col-lg-12 mx-auto text-center"'>
-            <h6>What you stand to gain, once you pay the N30,000</h6>
+            <h6>What you stand to gain, once you pay the N25,000</h6>
             <ol>
               <li className='mb-2'>
                 We are going to train you to become a Full stack Mern Developer.

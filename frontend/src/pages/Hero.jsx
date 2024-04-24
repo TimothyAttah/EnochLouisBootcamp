@@ -4,7 +4,7 @@ import Carousel from '../components/Carousel';
 export const Hero = () => {
   return (
     <>
-      <div className='bree vh-100 d-flex align-items-center position-relative'>
+      <div className='bree vh-70 d-flex align-items-center position-relative'>
         <div className='container'>
           <div className='row'>
             <div className='col-lg-12  mx-auto text-center '>

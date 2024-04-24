@@ -16,7 +16,7 @@ export const Footer = () => {
           <div className='row gy-4'>
             <div className='col-lg-4'>
               <Logo className='loading-text'>
-                <b>Code2ChangeYourWorld</b>
+                <b>flyingyouths.tech</b>
               </Logo>
             </div>
             <div className='col-lg-2'>
@@ -52,8 +52,7 @@ export const Footer = () => {
             <div className='col-lg-4'>
               <h5 className='text-white'>Contact</h5>
               <ul className='list-unstyled'>
-                <li>Email: enochlouis@gmail.com</li>
-                <li>Phone: 08038724054</li>
+                <li>Email: contactus@flyingyouths.tech</li>
               </ul>
             </div>
           </div>
@@ -64,7 +63,7 @@ export const Footer = () => {
           <div className='row'>
             <div className='col-md-6'>
               <p className='mb-0'>
-                © 2023 copyright all right reserved
+                © 2024 copyright all right reserved flyingyouths
                 <i className='bx bx-heart text-danger'></i>
               </p>
             </div>
